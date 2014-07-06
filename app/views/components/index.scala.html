@@ -1,0 +1,16 @@
+@(message: List[List[String]])
+
+@main("Sprinkler Project") {
+    <div class="well">
+        <h1>Sprinkler Status</h1>
+    </div>
+	<table border="1">
+		@for(item <- message){
+			<tr>
+			@for(section <- item){
+				<td>@section</td>
+			}
+			</tr>
+		}
+	</table>
+}
