@@ -12,6 +12,9 @@ object Application extends Controller {
   
   def index = Action {
     login.login
-    Ok(views.html.home(login.controllers))
+    var locations = List[String]()
+    login.locations.foreach(loc => locations = loc.name.toUpperCase() :: locations)
+    println(locations)
+    Ok(views.html.home(login.controllers, locations))
   }
 }
