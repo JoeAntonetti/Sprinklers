@@ -15,6 +15,11 @@ class Controller(args: List[List[String]], location: Location){
 	  	allowRun = values.filter(x => x(0).replace("\"", "") == "allowRun")(0)(1)
 	  	running = values.filter(x => x(0).replace("\"", "") == "running")(0)(1)
 	  	programNumber = values.filter(x => x(0).replace("\"", "") == "progNumber")(0)(1)
+	  	if(running == "true"){
+	  	  client.running = client.running + 1
+	  	}else{
+	  	  client.notRunning = client.notRunning + 1
+	  	}
 	  	this
 	}
 	

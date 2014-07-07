@@ -1,6 +1,6 @@
-@(sprinklers: List[model.Controller], locations: List[String])
+@(sprinklers: List[model.Controller], locations: List[String], running: Int, notRunning: Int)
 
-@main("Welcome to Play Framework") {
+@main("Sprinkler Status") {
 
     <script src='@routes.Assets.at("/components/platform/platform.js")'></script>
   <link rel="import" href='@routes.Assets.at("/components/font-roboto/roboto.html")'>
@@ -42,7 +42,7 @@
 }
     @@media (min-width: 481px) {
         paper-tabs {
-            width: 400px;
+            width: 600px;
         }
         .container {
             width: 400px;
@@ -54,8 +54,8 @@
         <core-toolbar>
             <paper-tabs selected="all" valueattr="name" self-end>
                 <paper-tab name="all">ALL</paper-tab>
-                <paper-tab name="running">RUNNING</paper-tab>
-                <paper-tab name="notrunning">NOT RUNNING</paper-tab>
+                <paper-tab name="running">RUNNING (@running)</paper-tab>
+                <paper-tab name="notrunning">NOT RUNNING (@notRunning)</paper-tab>
                 @for(loc <- locations){
                     <paper-tab name=@loc>@loc</paper-tab>
                 }

@@ -15,6 +15,6 @@ object Application extends Controller {
     var locations = List[String]()
     login.locations.foreach(loc => locations = loc.name.toUpperCase() :: locations)
     println(locations)
-    Ok(views.html.home(login.controllers, locations))
+    Ok(views.html.home(login.controllers, locations, login.running, login.notRunning))
   }
 }

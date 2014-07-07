@@ -18,6 +18,8 @@ class SprinklerHTTPClient(username: String, password: String) extends DefaultHtt
   var locations: List[Location] = _
   var controllers = List[Controller]()
   var currentControllerId: String = _
+  var running = 0
+  var notRunning = 0
   
   def login = {
      var params = new ArrayList[NameValuePair]
