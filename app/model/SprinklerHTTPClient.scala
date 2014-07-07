@@ -14,11 +14,30 @@ import org.apache.commons.io.IOUtils
 
 class SprinklerHTTPClient(username: String, password: String) extends DefaultHttpClient{
   
+  var accountID: String = _
+  var locations: List[Location] = _
+  var controllers = List[Controller]()
+  var currentControllerId: String = _
+  
   def login = {
      var params = new ArrayList[NameValuePair]
-     params.add(new BasicNameValuePair("login", username));
-     params.add(new BasicNameValuePair("password", password));  
+     params.add(new BasicNameValuePair("login", username))
+     params.add(new BasicNameValuePair("password", password))
      EntityUtils.consumeQuietly(this.post(params, SprinklerHTTPClient.LOGIN).getEntity)
+     accountID = getAccountId
+     locations = getLocations
+     locations.foreach(x => controllers = x.controllers ++ controllers)
+     println(controllers)
+  }
+  
+  def getAccountId: String = get(SprinklerHTTPClient.ACCOUNT)(0)(1).replace("\"", "")
+  
+  def getLocations: List[Location] = {
+     var params = new ArrayList[NameValuePair]
+     params.add(new BasicNameValuePair("accountId", accountID))
+     params.add(new BasicNameValuePair("dataType", "json"))
+     val responseData = breakResponse(post(params, SprinklerHTTPClient.LOCATIONS)).grouped(8).toList
+     responseData.map(x => new Location(x, this))
   }
   
   def post(parameters: ArrayList[NameValuePair], url: String): HttpResponse = {
@@ -42,13 +61,8 @@ class SprinklerHTTPClient(username: String, password: String) extends DefaultHtt
 
 object SprinklerHTTPClient {
    def LOGIN = "https://cloud.irrigationcaddy.com/auth/login"
-   def GET_STATUS = "https://cloud.irrigationcaddy.com/controller/getControllerStatus/17455?time=1402194931222"
-     
-   def createSprinkler(login: List[String]): Sprinkler = {
-    val httpClient = new SprinklerHTTPClient(login(0), login(1))
-    httpClient.login
-    val response = httpClient.get(SprinklerHTTPClient.GET_STATUS)
-    new Sprinkler(response)
-   }
-   
+   def ACCOUNT = "https://cloud.irrigationcaddy.com/account/accounts"
+   def LOCATIONS = "https://cloud.irrigationcaddy.com/location/locations"
+   def CONTROLLERS = "https://cloud.irrigationcaddy.com/controller/controllers"
+   def GET_STATUS = "https://cloud.irrigationcaddy.com/controller/getControllerStatus/" 
 }
