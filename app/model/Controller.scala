@@ -17,8 +17,10 @@ class Controller(args: List[List[String]], location: Location){
 	  	programNumber = values.filter(x => x(0).replace("\"", "") == "progNumber")(0)(1)
 	  	if(running == "true"){
 	  	  client.running = client.running + 1
+	  	  client.runningControllers = this :: client.runningControllers
 	  	}else{
 	  	  client.notRunning = client.notRunning + 1
+	  	  client.notRunningControllers = this :: client.notRunningControllers
 	  	}
 	  	this
 	}
