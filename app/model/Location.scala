@@ -21,7 +21,7 @@ class Location(args: JsonObject, client: SprinklerHTTPClient){
         val jsonArr = JsonArray.readFrom(responseData)
         var controllers = List[Controller]()
         for(i <- 0 until jsonArr.size()){
-          controllers = Controller.makeController(jsonArr.get(i).asObject(), this.name, this.id, client) :: controllers
+          controllers = Controller.makeController(jsonArr.get(i).asObject(), this.name, this.id, JsonObject.readFrom(client.get(SprinklerHTTPClient.GET_STATUS + jsonArr.get(i).asObject().get("controllerId").asString()))) :: controllers
         }
 		controllers
 	}

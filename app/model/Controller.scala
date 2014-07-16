@@ -2,29 +2,19 @@ package model
 
 import com.eclipsesource.json.JsonObject
 
-case class Controller(id: String, name: String, locName: String, locID: String, allowRun: Boolean, running: Boolean, programNumber: Int){
+case class Controller(id: Int, name: String, locName: String, locID: String, allowRun: Boolean, running: Boolean, programNumber: Int){
   
 }
 
 object Controller{
 	
-	def makeController(initialResponse: JsonObject, locName: String, locID: String, client: SprinklerHTTPClient): Controller = {
-		val id = initialResponse.get("controllerId").asString
+	def makeController(initialResponse: JsonObject, locName: String, locID: String, secondResponse: JsonObject): Controller = {
+		val id = initialResponse.get("controllerId").asInt
 		val name = initialResponse.get("controllerName").asString
-		val secondResponse = JsonObject.readFrom(client.get(SprinklerHTTPClient.GET_STATUS + id))
-		val allowRun = secondResponse.get("allowRun").asBoolean()
-		val running = secondResponse.get("running").asBoolean()
-		println(secondResponse.get("running").toString())
-		val programNumber = secondResponse.get("progNumber").asInt()
-		val controller = new Controller(id, name, locName, locID, allowRun, running, programNumber)
-		if(running == true){
-	  	  client.running = client.running + 1
-	  	  client.runningControllers = controller :: client.runningControllers
-	  	}else{
-	  	  client.notRunning = client.notRunning + 1
-	  	  client.notRunningControllers = controller :: client.notRunningControllers
-	  	}
-		controller
+		val allowRun = secondResponse.get("allowRun").asBoolean
+		val running = secondResponse.get("running").asBoolean
+		val programNumber = secondResponse.get("progNumber").asInt
+		new Controller(id, name, locName, locID, allowRun, running, programNumber)
 	}
 	
 }
