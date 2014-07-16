@@ -11,6 +11,8 @@ import org.apache.http.util.EntityUtils
 import org.apache.http.message.BasicNameValuePair
 import java.util.Arrays
 import org.apache.commons.io.IOUtils
+import com.eclipsesource.json.JsonArray
+import com.eclipsesource.json.JsonObject
 
 class SprinklerHTTPClient(username: String, password: String) extends DefaultHttpClient{
   
@@ -27,47 +29,39 @@ class SprinklerHTTPClient(username: String, password: String) extends DefaultHtt
      var params = new ArrayList[NameValuePair]
      params.add(new BasicNameValuePair("login", username))
      params.add(new BasicNameValuePair("password", password))
-     EntityUtils.consumeQuietly(this.post(params, SprinklerHTTPClient.LOGIN).getEntity)
+     this.post(params, SprinklerHTTPClient.LOGIN)
      accountID = getAccountId
      locations = getLocations
      locations.foreach(x => controllers = x.controllers ++ controllers)
-     println(controllers)
   }
   
-  def getAccountId: String = get(SprinklerHTTPClient.ACCOUNT)(0)(1).replace("\"", "")
+  def getAccountId: String = JsonArray.readFrom(get(SprinklerHTTPClient.ACCOUNT)).get(0).asObject.get("accountId").asString()
   
   def getLocations: List[Location] = {
      var params = new ArrayList[NameValuePair]
      params.add(new BasicNameValuePair("accountId", accountID))
      params.add(new BasicNameValuePair("dataType", "json"))
-     val responseData = breakResponse(post(params, SprinklerHTTPClient.LOCATIONS)).grouped(8).toList
-     responseData.map(x => new Location(x, this))
+     val responseData = post(params, SprinklerHTTPClient.LOCATIONS)
+     val jsonArr = JsonArray.readFrom(responseData)
+     var locations = List[Location]()
+     for(i <- 0 until jsonArr.size()){
+    	 locations = new Location(jsonArr.get(i).asObject(), this) :: locations
+     }
+     locations
   }
   
-  def post(parameters: ArrayList[NameValuePair], url: String): HttpResponse = {
+  def post(parameters: ArrayList[NameValuePair], url: String): String = {
     var post = new HttpPost(url)
     post.setEntity(new UrlEncodedFormEntity(parameters, "UTF-8"))
-    this.execute(post)
+    breakResponse(this.execute(post))
   }
   
-  def get(url: String): List[List[String]] = {
+  def get(url: String): String = {
     var get = new HttpGet(url)
     breakResponse(this.execute(get))
   }
   
-  def getString(url: String): String = {
-    var get = new HttpGet(url)
-    stringResponse(this.execute(get))
-  }
-  
-  
-  def breakResponse(r: HttpResponse): List[List[String]] = {
-    val items = IOUtils.toString(r.getEntity().getContent()).split("\\s*,\\s*").toList
-    EntityUtils.consumeQuietly(r.getEntity)
-    items.map(x => x.split("\\s*:\\s*").toList)
-  }
-  
-   def stringResponse(r: HttpResponse): String = {
+   def breakResponse(r: HttpResponse): String = {
     val items = IOUtils.toString(r.getEntity().getContent())
     EntityUtils.consumeQuietly(r.getEntity)
     items

@@ -11,7 +11,7 @@ object Controller{
 	def makeController(initialResponse: JsonObject, locName: String, locID: String, client: SprinklerHTTPClient): Controller = {
 		val id = initialResponse.get("controllerId").asString
 		val name = initialResponse.get("controllerName").asString
-		val secondResponse = JsonObject.readFrom(client.getString(SprinklerHTTPClient.GET_STATUS + id))
+		val secondResponse = JsonObject.readFrom(client.get(SprinklerHTTPClient.GET_STATUS + id))
 		val allowRun = secondResponse.get("allowRun").asBoolean()
 		val running = secondResponse.get("running").asBoolean()
 		println(secondResponse.get("running").toString())
