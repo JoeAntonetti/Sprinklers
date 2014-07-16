@@ -1,28 +1,30 @@
 package model
 
-class Controller(args: List[List[String]], location: Location){
+import com.eclipsesource.json.JsonObject
+
+case class Controller(id: String, name: String, locName: String, locID: String, allowRun: Boolean, running: Boolean, programNumber: Int){
   
-	val id = args(0)(1).replace("\"", "")
-	val name = args.filter(x => x(0).replace("\"", "") == "controllerName")(0)(1).replace("\"", "")
-	val locName = location.name
-	val locID = location.id
-	var allowRun: String = _
-	var running: String = _
-	var programNumber: String = _
+}
+
+object Controller{
 	
-	def fillFromLogin(client: SprinklerHTTPClient): Controller = {
-	    val values = client.get(SprinklerHTTPClient.GET_STATUS + id)
-	  	allowRun = values.filter(x => x(0).replace("\"", "") == "allowRun")(0)(1)
-	  	running = values.filter(x => x(0).replace("\"", "") == "running")(0)(1)
-	  	programNumber = values.filter(x => x(0).replace("\"", "") == "progNumber")(0)(1)
-	  	if(running == "true"){
+	def makeController(initialResponse: JsonObject, locName: String, locID: String, client: SprinklerHTTPClient): Controller = {
+		val id = initialResponse.get("controllerId").asString
+		val name = initialResponse.get("controllerName").asString
+		val secondResponse = JsonObject.readFrom(client.getString(SprinklerHTTPClient.GET_STATUS + id))
+		val allowRun = secondResponse.get("allowRun").asBoolean()
+		val running = secondResponse.get("running").asBoolean()
+		println(secondResponse.get("running").toString())
+		val programNumber = secondResponse.get("progNumber").asInt()
+		val controller = new Controller(id, name, locName, locID, allowRun, running, programNumber)
+		if(running == true){
 	  	  client.running = client.running + 1
-	  	  client.runningControllers = this :: client.runningControllers
+	  	  client.runningControllers = controller :: client.runningControllers
 	  	}else{
 	  	  client.notRunning = client.notRunning + 1
-	  	  client.notRunningControllers = this :: client.notRunningControllers
+	  	  client.notRunningControllers = controller :: client.notRunningControllers
 	  	}
-	  	this
+		controller
 	}
 	
 }

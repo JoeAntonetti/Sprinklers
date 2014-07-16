@@ -55,10 +55,22 @@ class SprinklerHTTPClient(username: String, password: String) extends DefaultHtt
     breakResponse(this.execute(get))
   }
   
+  def getString(url: String): String = {
+    var get = new HttpGet(url)
+    stringResponse(this.execute(get))
+  }
+  
+  
   def breakResponse(r: HttpResponse): List[List[String]] = {
     val items = IOUtils.toString(r.getEntity().getContent()).split("\\s*,\\s*").toList
     EntityUtils.consumeQuietly(r.getEntity)
     items.map(x => x.split("\\s*:\\s*").toList)
+  }
+  
+   def stringResponse(r: HttpResponse): String = {
+    val items = IOUtils.toString(r.getEntity().getContent())
+    EntityUtils.consumeQuietly(r.getEntity)
+    items
   }
   
 }
