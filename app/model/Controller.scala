@@ -2,13 +2,13 @@ package model
 
 import com.eclipsesource.json.JsonObject
 
-case class Controller(id: Int, name: String, locName: String, locID: String, allowRun: Boolean, running: Boolean, programNumber: Int){
+case class Controller(id: Int, name: String, locName: String, locID: Int, allowRun: Boolean, running: Boolean, programNumber: Int){
   
 }
 
 object Controller{
 	
-	def makeController(initialResponse: JsonObject, locName: String, locID: String, secondResponse: JsonObject): Controller = {
+	def makeController(initialResponse: JsonObject, locName: String, locID: Int, secondResponse: JsonObject): Controller = {
 		val id = initialResponse.get("controllerId").asInt
 		val name = initialResponse.get("controllerName").asString
 		val allowRun = secondResponse.get("allowRun").asBoolean
