@@ -9,15 +9,15 @@ import com.eclipsesource.json.JsonValue
 
 
 
-case class Location(id: Int, name: String, controllers: List[Controller])
+case class Location(id: String, name: String, controllers: List[Controller])
 
 object Location{
  
-	def getControllers(args: JsonObject, client: SprinklerHTTPClient): Location = {
-		val id = args.get("locationId").asInt()
+	def makeLocation(args: JsonObject, client: SprinklerHTTPClient): Location = {
+		val id = args.get("locationId").asString()
 	    val name = args.get("locationName").asString
 		var params = new ArrayList[NameValuePair]
-        params.add(new BasicNameValuePair("locationId", id + ""))
+        params.add(new BasicNameValuePair("locationId", id))
         params.add(new BasicNameValuePair("dataType", "json"))
         val responseData = client.post(params, SprinklerHTTPClient.CONTROLLERS)
         val jsonArr = JsonArray.readFrom(responseData)

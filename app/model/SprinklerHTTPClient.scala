@@ -45,7 +45,7 @@ class SprinklerHTTPClient(username: String, password: String) extends DefaultHtt
      val jsonArr = JsonArray.readFrom(responseData)
      var locations = List[Location]()
      for(i <- 0 until jsonArr.size()){
-    	 locations = new Location(jsonArr.get(i).asObject(), this) :: locations
+    	 locations = Location.makeLocation(jsonArr.get(i).asObject(), this) :: locations
      }
      locations
   }
