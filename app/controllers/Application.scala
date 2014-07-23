@@ -5,8 +5,6 @@ import model.SprinklerHTTPClient
 import org.apache.commons.io.IOUtils
 import java.util.Arrays
 import org.apache.http.util.EntityUtils
-import reactivemongo.bson._
-import reactivemongo.bson.handlers._
 
 object Application extends Controller {
   

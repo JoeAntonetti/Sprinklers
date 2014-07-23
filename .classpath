@@ -99,6 +99,5 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="target/scala-2.10/src_managed/main"/>
 	<classpathentry kind="lib" path="lib/minimal-json-0.9.1.jar"/>
-	<classpathentry kind="lib" path="lib/casbah-alldep_2.9.3-2.7.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -7,7 +7,7 @@
   <link rel="import" href='@routes.Assets.at("/components/core-header-panel/core-header-panel.html")'>
   <link rel="import" href='@routes.Assets.at("/components/core-toolbar/core-toolbar.html")'>
   <link rel="import" href='@routes.Assets.at("/components/paper-tabs/paper-tabs.html")'>
-
+  <link rel="import" href='@routes.Assets.at("/components/paper-dialog/paper-dialog.html")'>
   <link rel="import" href='@routes.Assets.at("post-card.html")'>
   <style>
     html,body {
@@ -47,12 +47,25 @@
         .container {
             width: 400px;
         }
+       .paper-button {
+    background: #4285f4;
+    color: #fff;
+}
+.bottom_box {
+    position:absolute;
+    bottom:0;
+    right:0;
+}
+.paper-button:hover {
+    background: #2a56c6;
+}
     }
   </style>
   
    <core-header-panel>
         <core-toolbar>
             <paper-tabs selected="all" valueattr="name" self-end>
+
                 <paper-tab name="all">ALL</paper-tab>
                 <paper-tab name="running">RUNNING (@running)</paper-tab>
                 <paper-tab name="notrunning">NOT RUNNING (@notRunning)</paper-tab>
@@ -93,11 +106,25 @@
             
         </div>
     </core-header-panel>
+    <p class="bottom_box"><paper-button label="raised button" class="paper-button" onclick="toggleDialog()">Add User</paper-button></p>
+    <paper-dialog heading="Add a User" id="dialoge" transition="paper-dialog-transition-bottom">
+        Username: <input type="text" name="username"><br>
+        Password: <input type="text" name="password"><br>
+        <center>
+            <paper-button label="raised button" class="paper-button" onclick="toggleDialog()">Submit</paper-button>
+        </center>
+    </paper-dialog>
     <script>
         var tabs = document.querySelector('paper-tabs');
         tabs.addEventListener('core-select', function() {
         console.log("Selected: " + tabs.selected);
         });
+        
+    function toggleDialog() {
+      var dialog = document.getElementById("dialoge")
+      dialog.toggle();
+    }
+  
     </script>
  
 
