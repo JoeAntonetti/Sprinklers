@@ -1,5 +1,5 @@
 <projectDescription>
-  <name>sprinklers</name>
+  <name>hello-play-2_3-scala</name>
   <buildSpec>
     <buildCommand>
       <name>org.scala-ide.sdt.core.scalabuilder</name>

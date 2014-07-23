@@ -4,7 +4,7 @@
 		module="sprinklers-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20140628174922"
+		publication="20140721190124"
 		e:sbtVersion="0.13" e:scalaVersion="2.10"
 	>
 		<description>
@@ -33,9 +33,18 @@
 		<artifact name="sprinklers-build" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
 	</publications>
 	<dependencies>
-		<dependency org="org.scala-lang" name="scala-compiler" rev="2.10.3" conf="scala-tool->default,optional(default)"/>
-		<dependency org="org.scala-lang" name="scala-library" rev="2.10.3" conf="scala-tool->default,optional(default);provided->default(compile)"/>
-		<dependency org="org.scala-sbt" name="sbt" rev="0.13.1" conf="provided->default(compile)"/>
-		<dependency org="com.typesafe.sbteclipse" name="sbteclipse-plugin" rev="2.4.0" conf="compile->default(compile)" e:sbtVersion="0.13" e:scalaVersion="2.10"/>
+		<dependency org="org.scala-lang" name="scala-compiler" rev="2.10.4" conf="scala-tool->default,optional(default)"/>
+		<dependency org="org.scala-lang" name="scala-library" rev="2.10.4" conf="scala-tool->default,optional(default);provided->default(compile)"/>
+		<dependency org="org.scala-sbt" name="sbt" rev="0.13.5-M2" conf="provided->default(compile)"/>
+		<dependency org="com.typesafe.sbteclipse" name="sbteclipse-plugin" rev="2.3.0" conf="compile->default(compile)" e:sbtVersion="0.13" e:scalaVersion="2.10"/>
+		<dependency org="com.github.mpeltonen" name="sbt-idea" rev="1.5.2" conf="compile->default(compile)" e:sbtVersion="0.13" e:scalaVersion="2.10"/>
+		<dependency org="com.typesafe.play" name="sbt-plugin" rev="2.3-M1" conf="compile->default(compile)" e:sbtVersion="0.13" e:scalaVersion="2.10"/>
+		<dependency org="com.typesafe.sbt" name="sbt-rjs" rev="1.0.0-M2a" conf="compile->default(compile)" e:sbtVersion="0.13" e:scalaVersion="2.10"/>
+		<dependency org="com.typesafe.sbt" name="sbt-coffeescript" rev="1.0.0-M2a" conf="compile->default(compile)" e:sbtVersion="0.13" e:scalaVersion="2.10"/>
+		<dependency org="com.typesafe.sbt" name="sbt-less" rev="1.0.0-M2a" conf="compile->default(compile)" e:sbtVersion="0.13" e:scalaVersion="2.10"/>
+		<dependency org="com.typesafe.sbt" name="sbt-jshint" rev="1.0.0-M2a" conf="compile->default(compile)" e:sbtVersion="0.13" e:scalaVersion="2.10"/>
+		<dependency org="com.typesafe.sbt" name="sbt-digest" rev="1.0.0-M2a" conf="compile->default(compile)" e:sbtVersion="0.13" e:scalaVersion="2.10"/>
+		<dependency org="com.typesafe.sbt" name="sbt-gzip" rev="1.0.0-M2a" conf="compile->default(compile)" e:sbtVersion="0.13" e:scalaVersion="2.10"/>
+		<dependency org="com.typesafe.sbt" name="sbt-mocha" rev="1.0.0-M2a" conf="compile->default(compile)" e:sbtVersion="0.13" e:scalaVersion="2.10"/>
 	</dependencies>
 </ivy-module>

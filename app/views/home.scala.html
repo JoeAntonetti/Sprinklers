@@ -1,0 +1,104 @@
+@(sprinklers: List[model.Controller], locations: List[String], running: Int, notRunning: Int)
+
+@main("Sprinkler Status") {
+
+    <script src='@routes.Assets.at("/components/platform/platform.js")'></script>
+  <link rel="import" href='@routes.Assets.at("/components/font-roboto/roboto.html")'>
+  <link rel="import" href='@routes.Assets.at("/components/core-header-panel/core-header-panel.html")'>
+  <link rel="import" href='@routes.Assets.at("/components/core-toolbar/core-toolbar.html")'>
+  <link rel="import" href='@routes.Assets.at("/components/paper-tabs/paper-tabs.html")'>
+
+  <link rel="import" href='@routes.Assets.at("post-card.html")'>
+  <style>
+    html,body {
+        height: 100%;
+        margin: 0;
+        background-color: #E5E5E5;
+        font-family: 'RobotoDraft', sans-serif;
+     }
+    core-header-panel {
+        height: 100%;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch; 
+    }
+    core-toolbar {
+        background: #03a9f4;
+        color: white;
+    }
+    paper-tabs {
+        width: 100%;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .container {
+        width: 80%;
+        margin: 50px auto;
+    }
+    
+    paper-ripple {
+  color: #4285f4;
+}
+    @@media (min-width: 481px) {
+        paper-tabs {
+            width: 600px;
+        }
+        .container {
+            width: 400px;
+        }
+    }
+  </style>
+  
+   <core-header-panel>
+        <core-toolbar>
+            <paper-tabs selected="all" valueattr="name" self-end>
+                <paper-tab name="all">ALL</paper-tab>
+                <paper-tab name="running">RUNNING (@running)</paper-tab>
+                <paper-tab name="notrunning">NOT RUNNING (@notRunning)</paper-tab>
+                @for(loc <- locations){
+                    <paper-tab name=@loc>@loc</paper-tab>
+                }
+            </paper-tabs>
+        </core-toolbar>
+        <div horizontal layout wrap>
+            @for(sprinkler <- sprinklers){
+                <div class="container">
+                    <post-card>
+                        <paper-ripple class="recenteringTouch"></paper-ripple>
+                        @if(sprinkler.allowRun == true){
+                	       <img width="70" height="70" src='@routes.Assets.at("/images/on.png")'>
+                        }else{
+                	       <img width="70" height="70" src='@routes.Assets.at("/images/off.png")'>
+                        }
+			             <h2>@sprinkler.name</h2>
+			             <center>
+			                @if(sprinkler.running == true){
+			    	          <h3><i>System is currently running</i></h3>
+			                }else{
+			    	          <h3><i>System is not currently running</i></h3>
+			                }
+			                <h4>Location: @sprinkler.locName</h4>
+			                <h4>ID: @sprinkler.id</h4>
+			                <h4>Location ID: @sprinkler.locID</h4>
+			            </center>
+                    </post-card>
+                </div>
+	        }
+        </div>
+        <div id="running">
+            
+        </div>
+        <div id="notRunning">
+            
+        </div>
+    </core-header-panel>
+    <script>
+        var tabs = document.querySelector('paper-tabs');
+        tabs.addEventListener('core-select', function() {
+        console.log("Selected: " + tabs.selected);
+        });
+    </script>
+ 
+
+}
