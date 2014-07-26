@@ -6,6 +6,11 @@ import org.apache.commons.io.IOUtils
 import java.util.Arrays
 import org.apache.http.util.EntityUtils
 
+import reactivemongo.api.gridfs.GridFS
+import reactivemongo.api.gridfs.Implicits.DefaultReadFileReader
+import reactivemongo.api.collections.default.BSONCollection
+import reactivemongo.bson._
+
 object Application extends Controller {
   
   val login = new SprinklerHTTPClient("Kevin087", "oliver0564")
