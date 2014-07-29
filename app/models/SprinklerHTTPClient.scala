@@ -1,4 +1,4 @@
-package model
+package models
 
 import org.apache.http.impl.client.DefaultHttpClient
 import java.util.ArrayList
