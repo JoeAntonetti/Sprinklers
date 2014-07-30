@@ -108,11 +108,13 @@
     </core-header-panel>
     <p class="bottom_box"><paper-button label="raised button" class="paper-button" onclick="toggleDialog()">Add User</paper-button></p>
     <paper-dialog heading="Add a User" id="dialoge" transition="paper-dialog-transition-bottom">
-        Username: <input type="text" name="username"><br>
-        Password: <input type="text" name="password"><br>
-        <center>
-            <paper-button label="raised button" class="paper-button" onclick="toggleDialog()">Submit</paper-button>
-        </center>
+    <form method="post" action="@routes.Application.addLogin()">
+  <input type="username" name="username" /><br/>
+  <input type="password" name="password" /><br/>
+
+  <input type="submit" value="Login" />
+</form>
+       
     </paper-dialog>
     <script>
         var tabs = document.querySelector('paper-tabs');

@@ -1,17 +1,16 @@
 package controllers
 
-import java.io.BufferedWriter
-import java.io.FileOutputStream
-import java.io.OutputStreamWriter
+import scala.io.Source
+
 import model.SprinklerHTTPClient
+import play.api.data.Form
+import play.api.data.Forms._
 import play.api.mvc.Action
 import play.api.mvc.Controller
-import java.io.FileWriter
-import java.io.File
-import scalax.io.Resource
-import scalax.io.Output
+import play.api.mvc.Result
 import scalax.io.Codec
-import scala.io.Source
+import scalax.io.Output
+import scalax.io.Resource
 
 object Application extends Controller{
   
@@ -21,6 +20,13 @@ object Application extends Controller{
   var running = 0
   var notRunning = 0
   var locations = List[String]()
+  
+   val loginForm = Form(
+        tuple(
+             "username" -> text,
+             "password" -> text
+        )
+    )
   
   def index = Action {
     //login.login
@@ -37,6 +43,18 @@ object Application extends Controller{
     val output:Output = Resource.fromFile("data\\" + f)
     output.writeStrings(List(s1,s2),"|")(Codec.UTF8)
     output.write("\n")
+  }
+  
+  def addLogin = Action { implicit request =>
+    val (username, password) = loginForm.bindFromRequest.get
+    write(username, password, "logins")
+    read("logins")
+    for(login <- logins){
+      login.login
+      controllers = login.controllers ++ controllers
+      login.locations.foreach(loc => locations = loc.name.toUpperCase() :: locations)
+    }
+    Ok(views.html.home(controllers, locations, running, notRunning))
   }
   
   def read(f: String) = {
