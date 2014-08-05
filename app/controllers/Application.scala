@@ -32,6 +32,7 @@ object Application extends Controller{
     //login.login
     read("logins")
     for(login <- logins){
+      println(login)
       login.login
       controllers = login.controllers ++ controllers
       login.locations.foreach(loc => locations = loc.name.toUpperCase() :: locations)
@@ -60,6 +61,7 @@ object Application extends Controller{
   def read(f: String) = {
     for (line <- Source.fromFile("data\\" + f).getLines()) {
     	var loginData = line.split('|')
+    	println(loginData)
     	logins = new SprinklerHTTPClient(loginData(0), loginData(1)) :: logins
     }
   }

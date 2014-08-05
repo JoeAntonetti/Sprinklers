@@ -9,7 +9,7 @@
 		extra-sbtVersion="0.13"
 		conf="provided"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20140730160959"/>
+		date="20140805122817"/>
 	<dependencies>
 		<module organisation="org.scala-sbt" name="sbt">
 			<revision name="0.13.5-M2" status="release" pubdate="20140327232810" resolver="sbt-chain" artresolver="sbt-chain" downloaded="false" searched="false" default="false" conf="compile, default(compile)" position="1">
@@ -60,11 +60,11 @@
 				<metadata-artifact status="no" details="" size="1880" time="0" location="C:\Users\Joseph\.ivy2\cache\org.scala-sbt\compiler-interface\ivy-0.13.5-M2.xml" searched="false" origin-is-local="false" origin-location="http://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/compiler-interface/0.13.5-M2/ivys/ivy.xml"/>
 				<caller organisation="org.scala-sbt" name="sbt" conf="compile" rev="0.13.5-M2" rev-constraint-default="0.13.5-M2" rev-constraint-dynamic="0.13.5-M2" callerrev="0.13.5-M2"/>
 				<artifacts>
-					<artifact name="compiler-interface-bin" type="jar" ext="jar" extra-component="compiler-interface-bin_2.10.4" status="no" details="" size="239584" time="0" location="C:\Users\Joseph\.ivy2\cache\org.scala-sbt\compiler-interface\jars\compiler-interface-bin-0.13.5-M2.jar">
-						<origin-location is-local="false" location="http://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/compiler-interface/0.13.5-M2/jars/compiler-interface-bin.jar"/>
-					</artifact>
 					<artifact name="compiler-interface-src" type="jar" ext="jar" extra-component="compiler-interface-src" status="no" details="" size="29778" time="0" location="C:\Users\Joseph\.ivy2\cache\org.scala-sbt\compiler-interface\jars\compiler-interface-src-0.13.5-M2.jar">
 						<origin-location is-local="false" location="http://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/compiler-interface/0.13.5-M2/jars/compiler-interface-src.jar"/>
+					</artifact>
+					<artifact name="compiler-interface-bin" type="jar" ext="jar" extra-component="compiler-interface-bin_2.10.4" status="no" details="" size="239584" time="0" location="C:\Users\Joseph\.ivy2\cache\org.scala-sbt\compiler-interface\jars\compiler-interface-bin-0.13.5-M2.jar">
+						<origin-location is-local="false" location="http://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/compiler-interface/0.13.5-M2/jars/compiler-interface-bin.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>

@@ -9,7 +9,7 @@
 		extra-sbtVersion="0.13"
 		conf="runtime"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20140730160959"/>
+		date="20140805122817"/>
 	<dependencies>
 		<module organisation="com.typesafe.sbt" name="sbt-mocha">
 			<revision name="1.0.0-M2a" status="integration" pubdate="20140405005200" resolver="sbt-chain" artresolver="sbt-chain" extra-scalaVersion="2.10" extra-sbtVersion="0.13" downloaded="false" searched="false" default="false" conf="compile, default(compile)" position="104">
@@ -242,7 +242,7 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe" name="webdriver_2.10">
-			<revision name="1.0.0-M2" status="release" pubdate="20140630044431" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="46">
+			<revision name="1.0.0-M2" status="release" pubdate="20140801030843" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="46">
 				<metadata-artifact status="no" details="" size="3335" time="0" location="C:\Users\Joseph\.ivy2\cache\com.typesafe\webdriver_2.10\ivy-1.0.0-M2.xml" searched="false" origin-is-local="false" origin-location="http://repo.typesafe.com/typesafe/releases/com/typesafe/webdriver_2.10/1.0.0-M2/webdriver_2.10-1.0.0-M2.pom"/>
 				<caller organisation="com.typesafe.sbt" name="sbt-webdriver" conf="compile" rev="1.0.0-M2" rev-constraint-default="1.0.0-M2" rev-constraint-dynamic="1.0.0-M2" callerrev="1.0.0-M2"/>
 				<artifacts>
@@ -707,7 +707,7 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe" name="npm_2.10">
-			<revision name="1.0.0-M2" status="release" pubdate="20140630044411" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="41">
+			<revision name="1.0.0-M2" status="release" pubdate="20140801030835" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="41">
 				<metadata-artifact status="no" details="" size="3180" time="0" location="C:\Users\Joseph\.ivy2\cache\com.typesafe\npm_2.10\ivy-1.0.0-M2.xml" searched="false" origin-is-local="false" origin-location="http://repo.typesafe.com/typesafe/releases/com/typesafe/npm_2.10/1.0.0-M2/npm_2.10-1.0.0-M2.pom"/>
 				<caller organisation="com.typesafe.sbt" name="sbt-js-engine" conf="compile" rev="1.0.0-M2" rev-constraint-default="1.0.0-M2" rev-constraint-dynamic="1.0.0-M2" callerrev="1.0.0-M2a"/>
 				<artifacts>
@@ -741,7 +741,7 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe" name="jse_2.10">
-			<revision name="1.0.0-M2" status="release" pubdate="20140630044309" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, master(*), compile, runtime(*), runtime, default(compile), compile(*), master" position="27">
+			<revision name="1.0.0-M2" status="release" pubdate="20140801030811" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, master(*), compile, runtime(*), runtime, default(compile), compile(*), master" position="27">
 				<metadata-artifact status="no" details="" size="3742" time="0" location="C:\Users\Joseph\.ivy2\cache\com.typesafe\jse_2.10\ivy-1.0.0-M2.xml" searched="false" origin-is-local="false" origin-location="http://repo.typesafe.com/typesafe/releases/com/typesafe/jse_2.10/1.0.0-M2/jse_2.10-1.0.0-M2.pom"/>
 				<caller organisation="com.typesafe" name="npm_2.10" conf="default, compile, runtime, master" rev="1.0.0-M2" rev-constraint-default="1.0.0-M2" rev-constraint-dynamic="1.0.0-M2" callerrev="1.0.0-M2"/>
 				<caller organisation="com.typesafe.sbt" name="sbt-js-engine" conf="compile" rev="1.0.0-M2" rev-constraint-default="1.0.0-M2" rev-constraint-dynamic="1.0.0-M2" callerrev="1.0.0-M2a"/>
@@ -985,7 +985,7 @@
 			</revision>
 		</module>
 		<module organisation="net.contentobjects.jnotify" name="jnotify">
-			<revision name="0.94" status="release" pubdate="20140612001432" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="20">
+			<revision name="0.94" status="release" pubdate="20140801001329" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="20">
 				<metadata-artifact status="no" details="" size="2276" time="0" location="C:\Users\Joseph\.ivy2\cache\net.contentobjects.jnotify\jnotify\ivy-0.94.xml" searched="false" origin-is-local="false" origin-location="http://repo.typesafe.com/typesafe/releases/net/contentobjects/jnotify/jnotify/0.94/jnotify-0.94.pom"/>
 				<caller organisation="com.typesafe.play" name="sbt-plugin" conf="compile" rev="0.94" rev-constraint-default="0.94" rev-constraint-dynamic="0.94" callerrev="2.3-M1"/>
 				<artifacts>
@@ -1110,7 +1110,7 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="templates-compiler_2.10">
-			<revision name="2.3-M1" status="release" pubdate="20140630044208" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="9">
+			<revision name="2.3-M1" status="release" pubdate="20140801030800" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="9">
 				<metadata-artifact status="no" details="" size="2987" time="0" location="C:\Users\Joseph\.ivy2\cache\com.typesafe.play\templates-compiler_2.10\ivy-2.3-M1.xml" searched="false" origin-is-local="false" origin-location="http://repo.typesafe.com/typesafe/releases/com/typesafe/play/templates-compiler_2.10/2.3-M1/templates-compiler_2.10-2.3-M1.pom"/>
 				<caller organisation="com.typesafe.play" name="sbt-plugin" conf="compile" rev="2.3-M1" rev-constraint-default="2.3-M1" rev-constraint-dynamic="2.3-M1" callerrev="2.3-M1"/>
 				<artifacts>
@@ -1270,7 +1270,7 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="routes-compiler_2.10">
-			<revision name="2.3-M1" status="release" pubdate="20140630044154" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="5">
+			<revision name="2.3-M1" status="release" pubdate="20140801030758" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="5">
 				<metadata-artifact status="no" details="" size="2831" time="0" location="C:\Users\Joseph\.ivy2\cache\com.typesafe.play\routes-compiler_2.10\ivy-2.3-M1.xml" searched="false" origin-is-local="false" origin-location="http://repo.typesafe.com/typesafe/releases/com/typesafe/play/routes-compiler_2.10/2.3-M1/routes-compiler_2.10-2.3-M1.pom"/>
 				<caller organisation="com.typesafe.play" name="sbt-plugin" conf="compile" rev="2.3-M1" rev-constraint-default="2.3-M1" rev-constraint-dynamic="2.3-M1" callerrev="2.3-M1"/>
 				<artifacts>
@@ -1498,7 +1498,7 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="build-link">
-			<revision name="2.3-M1" status="release" pubdate="20140630003350" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="2">
+			<revision name="2.3-M1" status="release" pubdate="20140801030753" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="2">
 				<metadata-artifact status="no" details="" size="2577" time="0" location="C:\Users\Joseph\.ivy2\cache\com.typesafe.play\build-link\ivy-2.3-M1.xml" searched="false" origin-is-local="false" origin-location="http://repo.typesafe.com/typesafe/releases/com/typesafe/play/build-link/2.3-M1/build-link-2.3-M1.pom"/>
 				<caller organisation="com.typesafe.play" name="sbt-plugin" conf="compile" rev="2.3-M1" rev-constraint-default="2.3-M1" rev-constraint-dynamic="2.3-M1" callerrev="2.3-M1"/>
 				<artifacts>
@@ -1524,7 +1524,7 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="play-exceptions">
-			<revision name="2.3-M1" status="release" pubdate="20140630003353" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="master(*), default, compile, runtime(*), runtime, default(compile), compile(*), master" position="3">
+			<revision name="2.3-M1" status="release" pubdate="20140801030755" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="master(*), default, compile, runtime(*), runtime, default(compile), compile(*), master" position="3">
 				<metadata-artifact status="no" details="" size="2270" time="0" location="C:\Users\Joseph\.ivy2\cache\com.typesafe.play\play-exceptions\ivy-2.3-M1.xml" searched="false" origin-is-local="false" origin-location="http://repo.typesafe.com/typesafe/releases/com/typesafe/play/play-exceptions/2.3-M1/play-exceptions-2.3-M1.pom"/>
 				<caller organisation="com.typesafe.play" name="build-link" conf="default, compile, runtime, master" rev="2.3-M1" rev-constraint-default="2.3-M1" rev-constraint-dynamic="2.3-M1" callerrev="2.3-M1"/>
 				<caller organisation="com.typesafe.play" name="sbt-plugin" conf="compile" rev="2.3-M1" rev-constraint-default="2.3-M1" rev-constraint-dynamic="2.3-M1" callerrev="2.3-M1"/>

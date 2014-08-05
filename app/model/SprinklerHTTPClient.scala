@@ -75,4 +75,5 @@ object SprinklerHTTPClient {
    def LOCATIONS = "https://cloud.irrigationcaddy.com/location/locations"
    def CONTROLLERS = "https://cloud.irrigationcaddy.com/controller/controllers"
    def GET_STATUS = "https://cloud.irrigationcaddy.com/controller/getControllerStatus/" 
+   def GET_PROGRAM = "https://cloud.irrigationcaddy.com/controller/getProgram/"
 }

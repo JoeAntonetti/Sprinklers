@@ -23,7 +23,7 @@ object Location{
         val jsonArr = JsonArray.readFrom(responseData)
         var controllers = List[Controller]()
         for(i <- 0 until jsonArr.size()){
-          controllers = Controller.makeController(jsonArr.get(i).asObject(), name, id, JsonObject.readFrom(client.get(SprinklerHTTPClient.GET_STATUS + jsonArr.get(i).asObject().get("controllerId").asString()))) :: controllers
+          controllers = Controller.makeController(jsonArr.get(i).asObject(), name, id, client) :: controllers
         }
 		new Location(id, name, controllers)
 	}
