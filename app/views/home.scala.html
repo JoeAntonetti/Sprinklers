@@ -80,19 +80,23 @@
                     <post-card>
                         <paper-ripple class="recenteringTouch"></paper-ripple>
                         @if(sprinkler.allowRun == true){
-                	       <img width="70" height="70" src='@routes.Assets.at("/images/on.png")'>
+                	       <img width="50" height="50" src='@routes.Assets.at("/images/on.png")'>
                         }else{
-                	       <img width="70" height="70" src='@routes.Assets.at("/images/off.png")'>
+                	       <img width="50" height="50" src='@routes.Assets.at("/images/off.png")'>
                         }
-                         @if(sprinkler.programs(0).allowRun == true || sprinkler.programs(1).allowRun == true || sprinkler.programs(2).allowRun == true){
-                	       <img width="70" height="70" src='@routes.Assets.at("/images/on.png")' title="Program is enabled">
+                        @if(sprinkler.timesSet == false){
+                            <img width="50" height="50" src='@routes.Assets.at("/images/timesNotSet.png")' title="No Times Set!">
                         }else{
-                	       <img width="70" height="70" src='@routes.Assets.at("/images/off.png")' title="No programs enabled">
+                            @if(sprinkler.programs(0).allowRun == false && sprinkler.programs(1).allowRun == false && sprinkler.programs(2).allowRun == false){
+                	            <img width="50" height="50" src='@routes.Assets.at("/images/disabled.png")' title="Program is enabled">
+                	        }else{
+                	            <img width="50" height="50" src='@routes.Assets.at("/images/on.png")' title="No programs enabled">
+                            }
                         }
                          @if(sprinkler.allowRun == true){
-                	       <img width="70" height="70" src='@routes.Assets.at("/images/on.png")'>
+                	       <img width="50" height="50" src='@routes.Assets.at("/images/on.png")'>
                         }else{
-                	       <img width="70" height="70" src='@routes.Assets.at("/images/off.png")'>
+                	       <img width="50" height="50" src='@routes.Assets.at("/images/off.png")'>
                         }
 			             <h2>@sprinkler.name</h2>
                     </post-card>
