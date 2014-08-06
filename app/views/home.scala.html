@@ -79,19 +79,26 @@
                 <div class="container">
                     <post-card>
                         <paper-ripple class="recenteringTouch"></paper-ripple>
-                        @if(sprinkler.allowRun == true){
-                	       <img width="50" height="50" src='@routes.Assets.at("/images/on.png")'>
-                        }else{
-                	       <img width="50" height="50" src='@routes.Assets.at("/images/off.png")'>
+                        @if(sprinkler.flag1.equals("programsDisabled")){
+                            <img width="50" height="50" src='@routes.Assets.at("/images/off.png")' title="No Programs Enabled">
                         }
-                        @if(sprinkler.timesSet == false){
-                            <img width="50" height="50" src='@routes.Assets.at("/images/timesNotSet.png")' title="No Times Set!">
-                        }else{
-                            @if(sprinkler.programs(0).allowRun == false && sprinkler.programs(1).allowRun == false && sprinkler.programs(2).allowRun == false){
-                	            <img width="50" height="50" src='@routes.Assets.at("/images/disabled.png")' title="Program is enabled">
-                	        }else{
-                	            <img width="50" height="50" src='@routes.Assets.at("/images/on.png")' title="No programs enabled">
-                            }
+                        @if(sprinkler.flag1.equals("timesNotSet")){
+                            <img width="50" height="50" src='@routes.Assets.at("/images/off.png")' title="No Times Set">
+                        }
+						@if(sprinkler.flag1.equals("timeIncorrect")){
+                            <img width="50" height="50" src='@routes.Assets.at("/images/off.png")' title="The Time Is Incorrect">
+                        }
+                        @if(sprinkler.flag1.equals("clear")){
+                            <img width="50" height="50" src='@routes.Assets.at("/images/on.png")' title=@sprinkler.programNumber>
+                        }
+                        @if(sprinkler.flag2.equals("noFlowDetected")){
+                            <img width="50" height="50" src='@routes.Assets.at("/images/off.png")' title="No Flow Detected">
+                        }
+                          @if(sprinkler.flag2.equals("flowAbove")){
+                            <img width="50" height="50" src='@routes.Assets.at("/images/off.png")' title="Flow Is Too High">
+                        }
+                        @if(sprinkler.flag2.equals("clear")){
+                            <img width="50" height="50" src='@routes.Assets.at("/images/on.png")' title="It's All Good">
                         }
                          @if(sprinkler.allowRun == true){
                 	       <img width="50" height="50" src='@routes.Assets.at("/images/on.png")'>
@@ -102,12 +109,6 @@
                     </post-card>
                 </div>
 	        }
-        </div>
-        <div id="running">
-            
-        </div>
-        <div id="notRunning">
-            
         </div>
     </core-header-panel>
     <p class="bottom_box"><paper-button label="raised button" class="paper-button" onclick="toggleDialog()">Add User</paper-button></p>

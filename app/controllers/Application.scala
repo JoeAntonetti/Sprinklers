@@ -1,7 +1,6 @@
 package controllers
 
 import scala.io.Source
-
 import model.SprinklerHTTPClient
 import play.api.data.Form
 import play.api.data.Forms._
@@ -11,10 +10,10 @@ import play.api.mvc.Result
 import scalax.io.Codec
 import scalax.io.Output
 import scalax.io.Resource
+import java.util.Calendar
 
 object Application extends Controller{
   
-  val login = new SprinklerHTTPClient("Kevin087", "oliver0564")
   var logins = List[SprinklerHTTPClient]()
   var controllers = List[model.Controller]()
   var running = 0
@@ -40,7 +39,7 @@ object Application extends Controller{
     Ok(views.html.home(controllers, locations, running, notRunning))
   }
   
-  def write(s1: String, s2: String, f: String) = {
+  def write(s1: String, s2: String, s3: String, f: String) = {
     val output:Output = Resource.fromFile("data\\" + f)
     output.writeStrings(List(s1,s2),"|")(Codec.UTF8)
     output.write("\n")
@@ -48,7 +47,7 @@ object Application extends Controller{
   
   def addLogin = Action { implicit request =>
     val (username, password) = loginForm.bindFromRequest.get
-    write(username, password, "logins")
+    write(username, password, "0", "logins")
     read("logins")
     for(login <- logins){
       login.login
@@ -62,7 +61,7 @@ object Application extends Controller{
     for (line <- Source.fromFile("data\\" + f).getLines()) {
     	var loginData = line.split('|')
     	println(loginData)
-    	logins = new SprinklerHTTPClient(loginData(0), loginData(1)) :: logins
+    	logins = new SprinklerHTTPClient(loginData(0), loginData(1), loginData(2)) :: logins
     }
   }
 }

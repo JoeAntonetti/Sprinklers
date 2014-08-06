@@ -14,7 +14,7 @@ import org.apache.commons.io.IOUtils
 import com.eclipsesource.json.JsonArray
 import com.eclipsesource.json.JsonObject
 
-class SprinklerHTTPClient(username: String, password: String) extends DefaultHttpClient{
+class SprinklerHTTPClient(username: String, password: String, setFlow: String) extends DefaultHttpClient{
   
   var accountID: String = _
   var locations: List[Location] = _
@@ -24,6 +24,7 @@ class SprinklerHTTPClient(username: String, password: String) extends DefaultHtt
   var notRunning = 0
   var runningControllers = List[Controller]()
   var notRunningControllers = List[Controller]()
+  val flow = setFlow.toInt
   
   def login = {
      var params = new ArrayList[NameValuePair]
