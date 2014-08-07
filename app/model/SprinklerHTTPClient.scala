@@ -25,6 +25,8 @@ class SprinklerHTTPClient(username: String, password: String, setFlow: String) e
   var runningControllers = List[Controller]()
   var notRunningControllers = List[Controller]()
   val flow = setFlow.toInt
+  val uname = username
+  val pword = password
   
   def login = {
      var params = new ArrayList[NameValuePair]

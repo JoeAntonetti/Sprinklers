@@ -106,6 +106,12 @@
                 	       <img width="50" height="50" src='@routes.Assets.at("/images/off.png")'>
                         }
 			             <h2>@sprinkler.name</h2>
+			              <form method="post" action="https://cloud.irrigationcaddy.com/auth/login">
+  <input type="login" name="login" value=@sprinkler.uname hidden=true/><br/>
+  <input type="password" name="password" value=@sprinkler.pword hidden=true/><br/>
+
+  <input type="submit" value="Login" />
+</form>
                     </post-card>
                 </div>
 	        }
@@ -114,11 +120,12 @@
     <p class="bottom_box"><paper-button label="raised button" class="paper-button" onclick="toggleDialog()">Add User</paper-button></p>
     <paper-dialog heading="Add a User" id="dialoge" transition="paper-dialog-transition-bottom">
     <form method="post" action="@routes.Application.addLogin()">
-  <input type="username" name="username" /><br/>
+  <input type="username" name="username"/><br/>
   <input type="password" name="password" /><br/>
 
-  <input type="submit" value="Login" />
+  <input type="submit" value="View on Website" />
 </form>
+<iframe src="https://cloud.irrigationcaddy.com/auth/logout"></iframe>
        
     </paper-dialog>
     <script>

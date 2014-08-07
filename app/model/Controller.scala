@@ -4,7 +4,7 @@ import com.eclipsesource.json.JsonObject
 import com.eclipsesource.json.JsonArray
 import java.util.Calendar
 
-case class Controller(id: String, name: String, locName: String, locID: String, allowRun: Boolean, running: Boolean, programNumber: Int, flag1: String, flag2: String){
+case class Controller(id: String, name: String, locName: String, locID: String, uname: String, pword: String, allowRun: Boolean, running: Boolean, programNumber: Int, flag1: String, flag2: String){
   
 }
 
@@ -22,7 +22,7 @@ object Controller{
 		programs = getProgram("3", id, client) :: programs
 		programs = getProgram("2", id, client) :: programs
 		programs = getProgram("1", id, client) :: programs
-		new Controller(id, name, locName, locID, allowRun, running, programNumber, findIcon1(programs, date), findIcon2(-1, client.flow))
+		new Controller(id, name, locName, locID, client.uname, client.pword, allowRun, running, programNumber, findIcon1(programs, date), findIcon2(-1, client.flow))
 	}
 	
 	def getProgram(i: String, id: String, client: SprinklerHTTPClient): Program = {
