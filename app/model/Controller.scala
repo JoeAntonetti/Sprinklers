@@ -38,8 +38,10 @@ object Controller{
 	  }else{
 	    if(time.get("hr").asInt != cal.get(Calendar.HOUR_OF_DAY) - 1 || time.get("date").asInt != cal.get(Calendar.DATE) || time.get("month").asInt != (cal.get(Calendar.MONTH) + 1)|| time.get("year").asInt != (cal.get(Calendar.YEAR) - 2000)){
 	      "timeIncorrect"
-	    }else{
+	    }else if(time.get("min").asInt < (cal.get(Calendar.MINUTE) + 5) && time.get("min").asInt > (cal.get(Calendar.MINUTE) - 5)){
 	      "clear"
+	    }else{
+	      "timeIncorrect"
 	    }
 	  }
 	}

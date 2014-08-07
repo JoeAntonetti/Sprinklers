@@ -4,7 +4,7 @@
 		module="sprinklers-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20140806172358"
+		publication="20140806211138"
 		e:scalaVersion="2.10" e:sbtVersion="0.13"
 	>
 		<description>

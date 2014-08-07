@@ -61,7 +61,7 @@ object Application extends Controller{
     for (line <- Source.fromFile("data\\" + f).getLines()) {
     	var loginData = line.split('|')
     	println(loginData)
-    	logins = new SprinklerHTTPClient(loginData(0), loginData(1), loginData(2)) :: logins
+    	logins = new SprinklerHTTPClient(loginData(0), loginData(1), "0") :: logins
     }
   }
 }
