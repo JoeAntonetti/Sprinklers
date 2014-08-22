@@ -14,11 +14,11 @@ object Controller{
 		val id = initialResponse.get("controllerId").asString
 		val name = initialResponse.get("controllerName").asString
 		val secondResponse = JsonObject.readFrom(client.get(SprinklerHTTPClient.GET_STATUS + id))
-		val allowRun = secondResponse.get("allowRun").asBoolean
-		val running = secondResponse.get("running").asBoolean
-		val programNumber = secondResponse.get("progNumber").asInt
+		var allowRun = if(secondResponse.get("allowRun") != null) secondResponse.get("allowRun").asBoolean else false
+		var running = if(secondResponse.get("running") != null) secondResponse.get("running").asBoolean else false
+		val programNumber = if(secondResponse.get("progNumber") != null) secondResponse.get("progNumber").asInt else 0
 		var programs = List[Program]()
-		val date = secondResponse.get("dateTime").asObject()
+		val date = if(secondResponse.get("dateTime") != null) secondResponse.get("dateTime").asObject() else null
 		programs = getProgram("3", id, client) :: programs
 		programs = getProgram("2", id, client) :: programs
 		programs = getProgram("1", id, client) :: programs

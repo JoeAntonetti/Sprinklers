@@ -2,7 +2,7 @@ import sbt._
 import Keys._
 
 object ApplicationBuild extends Build {
-
+  
   val appName = """sprinkler-project"""
   val appVersion = "1.0-SNAPSHOT"
 
@@ -12,8 +12,6 @@ object ApplicationBuild extends Build {
     
   )
 
-  val main = play.Project(appName, appVersion, appDependencies).settings(
-
-  )
+  val main = play.Project(appName, appVersion, appDependencies);
 
 }

@@ -13,6 +13,12 @@ import java.util.Arrays
 import org.apache.commons.io.IOUtils
 import com.eclipsesource.json.JsonArray
 import com.eclipsesource.json.JsonObject
+import org.apache.http.conn.scheme.Scheme
+import org.apache.http.conn.ssl.SSLSocketFactory
+import org.apache.http.conn.ssl.TrustSelfSignedStrategy
+import org.apache.http.conn.ssl.AllowAllHostnameVerifier
+import org.apache.http.conn.ssl.TrustStrategy
+import java.security.cert.X509Certificate
 
 class SprinklerHTTPClient(username: String, password: String, setFlow: String) extends DefaultHttpClient{
   
@@ -27,6 +33,7 @@ class SprinklerHTTPClient(username: String, password: String, setFlow: String) e
   val flow = setFlow.toInt
   val uname = username
   val pword = password
+  getConnectionManager().getSchemeRegistry().register(new Scheme("https", 443, new SSLSocketFactory(new TrustCustom(), new AllowAllHostnameVerifier())))
   
   def login = {
      var params = new ArrayList[NameValuePair]
@@ -79,4 +86,10 @@ object SprinklerHTTPClient {
    def CONTROLLERS = "https://cloud.irrigationcaddy.com/controller/controllers"
    def GET_STATUS = "https://cloud.irrigationcaddy.com/controller/getControllerStatus/" 
    def GET_PROGRAM = "https://cloud.irrigationcaddy.com/controller/getProgram/"
+}
+
+class TrustCustom extends TrustStrategy{
+  def isTrusted(chain: Array[X509Certificate], authType: String): Boolean = {
+    true
+  }
 }
